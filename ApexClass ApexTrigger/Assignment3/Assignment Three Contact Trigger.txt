@@ -1,0 +1,6 @@
+trigger AssignmentThreeOfOne on Contact (after insert) {
+    if(Trigger.isInsert){
+        AssignmentThree.contactCreation(Trigger.New);
+    }
+   
+}

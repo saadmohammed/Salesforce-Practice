@@ -1,0 +1,10 @@
+trigger CompletedTasks on Task (after update, after delete) {
+    
+    if(Trigger.isUpdate){
+        CompletedTaskClass.taskUpdate(Trigger.New, Trigger.Old);
+    }
+    
+    if(Trigger.isDelete){
+        CompletedTaskClass.taskDelete(Trigger.Old);
+    }	
+}

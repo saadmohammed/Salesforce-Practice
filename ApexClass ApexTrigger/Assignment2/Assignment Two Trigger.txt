@@ -1,0 +1,6 @@
+trigger AssignmentTwo on Account (after update) {
+    
+    if(Trigger.isUpdate){   
+       AssignmentTwo.updateContactProfile(Trigger.New);
+    }
+}

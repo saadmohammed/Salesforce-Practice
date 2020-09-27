@@ -1,0 +1,21 @@
+@isTest
+private class TestAssignmentOne {
+    @isTest static void updateAccountField(){
+        Account a = new Account(Name='Test A',is_gold__c=true);       
+        insert a;
+        Opportunity opp = new Opportunity(Name=a.Name + ' Opportunity',
+                                          StageName='Prospecting',
+                                          CloseDate=System.today().addMonths(1),
+                                          Amount=22000,
+                                          AccountId=a.Id);
+        insert opp;
+        
+        Test.startTest();
+        	opp.Amount = 21000;
+        	a.is_gold__c = true;
+        	update opp;
+        	update a;
+        Test.stopTest();
+        
+    } 
+}

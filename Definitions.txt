@@ -1,0 +1,28 @@
+Asynchronous Apex:
+-----------------
+An asynchronous process is a process or function that executes a task "in the background" without the user having to wait for the task to finish.
+	@future - async, run on seperate thread
+		- static void
+		- allow primitive types
+	Batch apex - large amount of record to process
+	Queueable - queue processess
+	schedule - process at specific time
+				 
+security:
+---------
+sharing(with sharing we are going security settings(user context))(with-out we are going without going security setting)
+		owd 
+		profiles 
+		roles
+		manual 
+		hierarchhy
+apex integration services:
+--------------------------
+	An Apex callout enables you to tightly integrate your Apex code with an external service. The callout makes a call to an external web service or sends an HTTP request from Apex code, and then receives the response.
+Apex callouts come in two flavors.
+
+Web service callouts to SOAP web services use XML, and typically require a WSDL document for code generation.
+HTTP callouts to services typically use REST with JSON.
+These two types of callouts are similar in terms of sending a request to a service and receiving a response. But while WSDL-based callouts apply to SOAP Web services, HTTP callouts can be used with any HTTP service, either SOAP or REST.
+
+

@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="ToDo" style="width: 100%;">
+      <lightning-button-icon slot="actions" icon-name="utility:sync"  alternative-text="Refresh" onclick={refreshTodoList} title="Refresh"> </lightning-button-icon>    
+      <lightning-layout>
+        <lightning-layout-item padding="around-small" size="12">
+          <template if:true={loading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+          </template>
+          
+          <ul class="slds-has-dividers_around-space">
+            <template for:each={todos} for:item="todo">
+                <li class="slds-item" key={todo.id}>
+                  <lightning-layout vertical-align="center" horizontal-align="spread">
+                    <lightning-layout-item padding="horizontal-small">
+                       {todo.name}
+                    </lightning-layout-item> 
+                    <lightning-layout-item padding="horizontal-small">
+                      <lightning-button-icon icon-name="utility:delete"  alternative-text="Delete" title="Delete" name={todo.id} onclick={deleteTask}> </lightning-button-icon>    
+                   </lightning-layout-item> 
+                 </lightning-layout> 
+                </li>
+              </template>           
+          </ul>    
+        </lightning-layout-item>
+      </lightning-layout>
+      <p slot="footer">
+        <lightning-layout pull-to-boundary="small">
+         <lightning-layout-item padding="horizontal-small" flexibility="grow">
+           <lightning-input type="text" label="New Task" placeholder="Enter new task" autocomplete="off" value={newTask} onchange={updateNewTask} variant="label-hidden" required ></lightning-input>
+         </lightning-layout-item> 
+         <lightning-layout-item padding="horizontal-small">
+            <lightning-button variant="brand" label="Add" onclick={addTask} > </lightning-button>
+         </lightning-layout-item> 
+        </lightning-layout>
+         
+      </p>
+
+    </lightning-card>
+</template>

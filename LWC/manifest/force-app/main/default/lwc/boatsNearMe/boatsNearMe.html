@@ -1,0 +1,15 @@
+<template>
+  <lightning-card class="slds-is-relative">
+    <template if:true={isLoading}>
+       <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+    </template>
+    <template if:false={isRendered}>
+       <lightning-map  class="slds-card"
+          map-markers={mapMarkers}
+          zoom-level="11"
+          markers-title="Boats">
+       </lightning-map>
+       <div slot="footer">Top 10 Only!</div>
+    </template>
+  </lightning-card>
+</template>

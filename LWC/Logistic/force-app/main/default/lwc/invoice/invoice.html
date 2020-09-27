@@ -1,0 +1,185 @@
+<template>
+<lightning-card>
+  <div class="slds-align_absolute-center slds-m-around--xx-large">
+    <h3 class="slds-text-heading_large">Invoice</h3>
+  </div>
+
+   <div class="container-fluid slds-m-around--xx-large">
+     <lightning-layout horizontal-align="center" class="slds-m-around_medium">
+      <lightning-layout-item size="6" class="slds-m-around_medium" >
+      <div class="form-group">
+       <lightning-input
+        label="Company Name"
+        name="Name"
+        value={Name}
+        required="required"
+        onchange={hanldeName}
+        type="text"
+        autocomplete="off"
+      ></lightning-input>
+      </div>
+     <div class="form-group">
+      <lightning-input
+        label="Mobile"
+        name="Mobile"
+        value={Mobile}
+        required="required"
+        type="number"
+        onchange={hanldeMobile}
+        autocomplete="off"
+        max-length="10"
+      ></lightning-input>
+     </div>     
+     </lightning-layout-item>
+      <lightning-layout-item size="6"  class="slds-m-around_medium">
+      <div class="form-group">
+        <lightning-input
+        label="Email"
+        name="email"
+        value={Email}
+        required="required"
+        type="email"
+        onchange={hanldeEmail}
+        autocomplete="off"
+        ></lightning-input>
+      </div>    
+      <div class="form-group">
+        <lightning-combobox 
+          name="progress"
+          label="Parcel Status"
+          onchange={hanldeStatus}
+          value={value}
+          placeholder="Select Progress"
+          options={options}></lightning-combobox>
+      </div>    
+     </lightning-layout-item>
+     </lightning-layout>   
+     <lightning-layout horizontal-align="center" class="slds-m-around_medium">
+      <lightning-layout-item size="6" class="slds-m-around_medium" >
+        <div class="form-group">
+          <lightning-input-address
+            data-id="pickupLocation"
+            address-label="Pickup Location"
+            street-label="Street"
+            city-label="City"
+            country-label="Country"
+            province-label="Province"
+            postal-code-label="PostalCode"
+            required
+            onchange={handlePickupLocation}
+            field-level-help="Enter the pickup location"
+          ></lightning-input-address>
+          <lightning-input
+            data-id="datetimeFieldPickup"
+            type="datetime"
+            value={PickupDateTime}
+            onchange={handlePickupDateTime}
+            label="Enter pickup time"
+          ></lightning-input>
+        </div>
+      </lightning-layout-item>
+      
+      <lightning-layout-item size="6" class="slds-m-around_medium" >
+        <div class="form-group">
+          <lightning-input-address
+            data-id="shippingLocation"
+            address-label="Shipping Location"
+            street-label="Street"
+            city-label="City"
+            country-label="Country"
+            province-label="Province"
+            postal-code-label="PostalCode"
+            required
+            onchange={handleShippingLocation}
+            field-level-help="Enter the shipping location"
+          ></lightning-input-address>
+          <lightning-input
+            data-id="datetimeFieldShipping"
+            type="datetime"
+            value={ShippingDateTime}
+            onchange={handleShippingDateTime}
+            label="Enter shipping time"
+          ></lightning-input>
+        </div>
+      </lightning-layout-item>    
+     </lightning-layout>
+
+    <div class="slds-align_absolute-center">
+    <lightning-layout pull-to-boundary="large" vertical-align="strech" >  
+      <lightning-layout-item class="slds-m-around_x-large" >
+        <div class="form-group">
+          <lightning-input 
+          label="Item Name" 
+          name="Name" 
+          value={ItemName} 
+          autocomplete="off" 
+          onchange={handleItemName} ></lightning-input>
+        </div>
+      </lightning-layout-item>
+      <lightning-layout-item class="slds-m-around_x-large" >
+      <div class="form-group">
+       <lightning-input
+        label="Weight"
+        name="Weight"
+        value={Weight}
+        onchange={handleWeigth}
+        required="required"
+        type="number"
+        step=".01"
+        autocomplete="off"
+      ></lightning-input>
+      </div>
+      </lightning-layout-item>
+      <lightning-layout-item class="slds-m-around_x-large" >
+     <div class="form-group">
+      <lightning-input
+        label="Rate per kg "
+        name="Rateperkg"
+        value={Rateperkg}
+        onchange={handleRateperkg}
+        required="required"
+        type="number"
+        step=".01"
+        autocomplete="off"
+        max-length="10"
+      ></lightning-input>
+     </div>     
+    </lightning-layout-item>
+    <lightning-layout-item  class="slds-m-around_x-large" >
+      <div class="form-group">
+        <lightning-input
+        label="Total"
+        name="Total"
+        value={Total}
+        onchange={handleTotal}
+        required="required"
+        type="number"
+        autocomplete="off"
+        ></lightning-input>
+      </div>    
+    </lightning-layout-item>
+    </lightning-layout>   
+   </div>
+    <div class="slds-align_absolute-center">
+      <lightning-button
+      label="Calculate"
+      onclick={calculate}
+      ></lightning-button>
+    </div>
+  </div>
+  
+
+  <p slot="footer">
+    <lightning-layout class="slds-m-around_large slds-align_absolute-center">
+      <lightning-layout-item>
+        <lightning-button
+          label="Submit"
+          onclick={handleSave}
+          variant="brand"
+        ></lightning-button>
+      </lightning-layout-item>
+    </lightning-layout>
+  </p>
+
+</lightning-card>
+</template>

@@ -1,0 +1,19 @@
+@isTest public class TestAssignmentTwo {
+    @isTest static void testUpdateProfileContact(){
+        Account a = new Account(Name='Test C',Website = 'www.google.com');
+        Contact c = new Contact(FirstName = 'Ahmed',
+                                LastName = 'Mohammed',
+                                Email = 'saad@gmail.com',
+                                AccountId = a.Id);
+        insert a;
+        insert c;
+        
+        Test.startTest();
+        	String result = a.Website+'/'+c.FirstName.substring(0,1)+''+c.LastName;
+      		c.Profile__c = result;
+        	update c;
+        Test.stopTest();
+        System.assertEquals('www.google.com/AMohammed',result,'Successful');
+        
+    }
+}

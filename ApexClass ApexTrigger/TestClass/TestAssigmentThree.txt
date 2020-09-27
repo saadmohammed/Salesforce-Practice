@@ -1,0 +1,25 @@
+@isTest public class TestAssignmentThree {
+    @isTest static void testUpdateProfileContact(){
+        Account a = new Account(Name='Test C',Website = 'www.google.com');
+        Contact c = new Contact(FirstName = 'Ahmed',
+                                LastName = 'Mohammed',
+                                Email = 'saad@gmail.com',
+                                AccountId = a.Id);
+        insert a;
+        insert c;
+        
+        
+        Test.startTest();
+	List<Contact> co_ls = [SELECT Id FROM Contact WHERE AccountId =: a.Id];
+
+        if(co_ls.size()>1){
+            a.Only_Default_Contact__c = FALSE;
+            update a;         
+        }
+        else{
+            a.Only_Default_Contact__c = TRUE;
+            update a;
+        }  
+        Test.stopTest();
+    }
+}

@@ -1,0 +1,29 @@
+public class AssignmentThree {
+    public static void accountCreation(List<Account> acc_ls){
+        List<Contact> Childs = new List<Contact>();   
+        for(Account aa : acc_ls){
+            Contact Child = new Contact();
+            Child.AccountId = aa.id;
+            Child.FirstName = 'Info';
+            Child.LastName = 'Default';
+            Child.Email = 'info@websitedomain.tld';
+            Childs.add(Child); 
+        }
+        insert Childs;
+    }  
+    
+    public static void contactCreation(List<Contact> con_ls){
+        
+        Contact c = [select Id, Account.Id from Contact where Id IN: con_ls];
+        Account a = [SELECT Only_Default_Contact__c FROM Account WHERE Id =: c.AccountId];
+        List<Contact> co_ls = [SELECT Id FROM Contact WHERE AccountId =: a.Id];
+        if(co_ls.size()>1){
+            a.Only_Default_Contact__c = FALSE;
+            update a;         
+        }
+        else{
+            a.Only_Default_Contact__c = TRUE;
+            update a;
+        }   
+    }
+}

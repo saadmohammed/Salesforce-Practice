@@ -1,0 +1,15 @@
+public class AssignmentTwo {
+    public static void updateContactProfile(List<Account> acc_list){
+        Account po = acc_list[0];
+        List<Contact> co_ls = [SELECT Id, FirstName, LastName,Profile__c FROM Contact WHERE AccountId =: po.Id];
+        List<Contact> co_ls1 = new List<Contact>();
+        if(po.Website != null){
+            for(Contact co: co_ls){				
+                String result = po.Website+'/'+co.FirstName.substring(0,1)+''+co.LastName;
+                co.Profile__c = result;
+                co_ls1.add(co); 
+            }
+        }
+        update co_ls1;
+    }
+}

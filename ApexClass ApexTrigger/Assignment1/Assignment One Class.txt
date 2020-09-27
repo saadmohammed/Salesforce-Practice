@@ -1,0 +1,21 @@
+public class AssignmentOne {
+    public static void updateAccountField(List<Opportunity> oppo_list){
+        List<Account> ls_ac_insert = new List<Account>();
+        try {
+            Opportunity co = oppo_list[0];
+            Account po = [SELECT Id, is_gold__c  FROM Account WHERE Id = :co.AccountId];   
+            List<Opportunity> l_co = [SELECT Id, Amount FROM Opportunity WHERE AccountId = :po.Id];
+            for(Opportunity am_co : l_co) {
+                if(am_co.Amount>20000){
+                    po.is_gold__c = true;   
+                }else if(am_co.Amount<20000){
+                    po.is_gold__c = false;
+                }  
+            }
+            ls_ac_insert.add(po);
+            update ls_ac_insert;
+        } catch (Exception e) {
+            System.debug(e);
+        }
+    }
+}

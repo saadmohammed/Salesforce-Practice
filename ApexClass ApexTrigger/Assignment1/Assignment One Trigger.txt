@@ -1,0 +1,9 @@
+trigger AssignmentOne on Opportunity (after insert, after update) {
+    
+    if(Trigger.isInsert){
+        AssignmentOne.updateAccountField(Trigger.New);      
+    }
+    if(Trigger.isUpdate){
+        AssignmentOne.updateAccountField(Trigger.New);     
+    }
+}

@@ -1,0 +1,5 @@
+trigger AssignmentThree on Account (after insert) {
+    if(Trigger.isInsert){
+        AssignmentThree.accountCreation(Trigger.New);        
+    }
+}

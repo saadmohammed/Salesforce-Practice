@@ -1,0 +1,37 @@
+public class CompletedTaskClass {
+    public static void taskUpdate(List<Task> tNEW, List<Task> tOLD){
+        Task taskNEW = tNEW[0];
+        Task taskOLD = tOLD[0];
+        Account a = [select Completed_Task__c from Account where id=: taskNEW.AccountId];
+        if(taskNEW.Status == 'Completed'){
+            if(a.Completed_Task__c == null){
+                a.Completed_Task__c = 0;                
+            }
+            Decimal count = a.Completed_Task__c;
+            count++;
+            a.Completed_Task__c = count;  
+        }else if(taskNEW.Status == 'Not Started' || 
+                 taskNEW.Status == 'In Progress' || 
+                 taskNEW.Status == 'Waiting on someone else' || 
+                 taskNEW.Status == 'Deferred'){
+                     
+                     if(taskOLD.Status == 'Completed'){
+                         Decimal count = a.Completed_Task__c;
+                         count--;
+                         a.Completed_Task__c = count;                                  
+                     }
+                 }
+        update a;
+    }
+    
+    public static void taskDelete(List<Task> tOLD){
+        Task task = tOLD[0];
+        Account a = [select Completed_Task__c from Account where id=: task.AccountId];
+        if(task.Status == 'Completed'){
+            Decimal count = a.Completed_Task__c;
+            count--;
+            a.Completed_Task__c = count;
+        }
+        update a;
+    }
+}
