@@ -80,28 +80,32 @@ export default class Customer extends LightningElement {
 
     }
 
-value = 'inProgress';
-valueText = "Select Event";
+// value = 'inProgress';
+// valueText = "Select Event";
 
-@wire(getAllEvents)
-eventsList;
+// @wire(getAllEvents)
+// eventsList;
 
-get eventOptions() {
-    var returnOptions = [];
-    if(this.eventsList.data){
-        this.eventsList.data.forEach(ele =>{
-            returnOptions.push({label:ele.Name , value:ele.Name});
-        }); 
-    }
-    console.log(JSON.stringify(returnOptions));
-    return returnOptions;
+// get eventOptions() {
+//     var returnOptions = [];
+//     if(this.eventsList.data){
+//         this.eventsList.data.forEach(ele =>{
+//             returnOptions.push({label:ele.Name , value:ele.Name});
+//         }); 
+//     }
+//     console.log(JSON.stringify(returnOptions));
+//     return returnOptions;
+// }
+
+//  handleEventMgrChange(event) {
+//     this.value = event.detail.value;
+//     this.valueText = "Event Selected";        
+//  }
+//  get hasResults() {
+//     return (this.eventsList.data.length > 0);
+//  }
 }
 
- handleEventMgrChange(event) {
-    this.value = event.detail.value;
-    this.valueText = "Event Selected";        
- }
- get hasResults() {
-    return (this.eventsList.data.length > 0);
- }
-}
+
+
+
