@@ -1,0 +1,27 @@
+<apex:page controller="GenerateInvoice">
+  <apex:sectionHeader title="Invoice" subtitle="Invoice" />
+
+  <apex:form >
+    <apex:pageMessages />
+    <apex:pageBlock title="Invoice for the parcel">
+     
+      <apex:pageBlockButtons >
+        <apex:commandButton action="{!sendPdf}" value="Generate Invoice"/>
+      </apex:pageBlockButtons>
+       
+      <apex:pageBlockSection >
+       
+        
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel value="Invoice" for="invoice"/>
+            <apex:selectList value="{!invoiceId}" id="invoice" size="1">
+                 <apex:selectOptions value="{!invoices}"/>
+            </apex:selectList>
+        </apex:pageBlockSectionItem>
+       
+      </apex:pageBlockSection>
+
+    </apex:pageBlock>
+  </apex:form>
+
+</apex:page>

@@ -1,0 +1,16 @@
+<template>
+  <lightning-card title="Asset Management" icon-name="standard:asset_object">
+  <template if:true={assetList}>
+    <lightning-datatable 
+        data={assetList} 
+        columns={columns} 
+        key-field="Id"
+        onsave={handleSave}
+        show-row-number-column="true"
+        hide-checkbox-column="true" 
+        draft-values={draftValues}
+    ></lightning-datatable>
+  </template>
+  <template if:true={error}> {error} </template>
+</lightning-card>
+</template>

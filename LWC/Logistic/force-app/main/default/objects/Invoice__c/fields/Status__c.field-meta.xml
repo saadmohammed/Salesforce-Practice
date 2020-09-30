@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>place</fullName>
+                <default>false</default>
+                <label>place</label>
+            </value>
+            <value>
+                <fullName>ontheway</fullName>
+                <default>false</default>
+                <label>ontheway</label>
+            </value>
+            <value>
+                <fullName>shipped</fullName>
+                <default>false</default>
+                <label>shipped</label>
+            </value>
+            <value>
+                <fullName>delivered</fullName>
+                <default>false</default>
+                <label>delivered</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

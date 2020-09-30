@@ -1,5 +1,8 @@
 <template>
-  <lightning-card title="Quotation">
+  <lightning-card>
+    <div class="slds-align_absolute-center slds-m-around--xx-large">
+      <h3 class="slds-text-heading_large">Quotation</h3>
+    </div>
     <lightning-layout
       pull-to-boundary="large"
       horizontal-align="strech"
@@ -33,10 +36,10 @@
       </lightning-layout-item>
     </lightning-layout>
     <div class="slds-align_absolute-center">
-    <lightning-layout vertical-align="center" class="slds-m-around_small">
+      <lightning-layout vertical-align="center" class="slds-m-around_small">
         <lightning-layout-item class="slds-m-around_small">
           <div class="form-group">
-            <h1>KILOGRAM : {rateParcel}</h1>
+            <h1>PARCEL : {rateParcel}</h1>
           </div>
         </lightning-layout-item>
         <lightning-layout-item class="slds-m-around_small">
@@ -44,37 +47,43 @@
             <h1>DOCUMENT : {rateDocument}</h1>
           </div>
         </lightning-layout-item>
-        
-    </lightning-layout>
-    </div>
-    
-      <lightning-layout pull-to-boundary="large" vertical-align="strech" class="slds-align_absolute-center">
-        <lightning-layout-item class="slds-m-around_x-large">
-          <div class="form-group">
-            <lightning-input
-              label="How many KiloGram"
-              value={Kilogram}
-              step="0.1"
-              type="number"
-              autocomplete="off"
-              onchange={handleKilogramChange}
-            ></lightning-input>
-          </div>
-        </lightning-layout-item>
-        <lightning-layout-item class="slds-m-around_x-large">
-          <div class="form-group">
-            <lightning-input
-              label="Total"
-              value={Total}
-              step="0.1"
-              type="number"
-              autocomplete="off"
-              onchange={handleTotal}
-            ></lightning-input>
-          </div>
-        </lightning-layout-item>
       </lightning-layout>
-   
+    </div>
+
+    <lightning-layout
+      pull-to-boundary="large"
+      vertical-align="strech"
+      class="slds-align_absolute-center"
+    >
+      <lightning-layout-item class="slds-m-around_x-large">
+        <div class="form-group">
+          <lightning-input
+            label="How many KiloGram"
+            value={Kilogram}
+            step="0.1"
+            type="number"
+            autocomplete="off"
+            onchange={handleKilogramChange}
+          ></lightning-input>
+        </div>
+      </lightning-layout-item>
+      <lightning-layout-item class="slds-m-around_x-large">
+        <div class="form-group">
+          <lightning-input
+            label="Total"
+            value={Total}
+            step="0.1"
+            type="number"
+            autocomplete="off"
+            onchange={handleTotal}
+          ></lightning-input>
+        </div>
+      </lightning-layout-item>
+    </lightning-layout>
+    <diiv class="slds-align_absolute-center slds-m-around_small">
+      <h2>Document contain fixed rate, only parcel are calculated by kilogram</h2>
+    </diiv>
+
     <p slot="footer">
       <lightning-layout class="slds-m-around_large slds-align_absolute-center">
         <lightning-layout-item>
@@ -88,3 +97,6 @@
     </p>
   </lightning-card>
 </template>
+
+
+

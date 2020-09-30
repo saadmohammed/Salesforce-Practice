@@ -1,0 +1,38 @@
+<apex:page standardController="Invoice__c" renderAs="pdf" >
+   
+   <center>
+       <h2 style="color: rgb(0, 112, 210);">INVOICE</h2>
+   </center>     
+  <table style="width:100%;  margin-bottom: 30px;  margin-top: 30px;">
+  <tr style="color: rgb(220, 12, 21);">
+    <th>From</th>
+    <th style="text-align: left;">To</th>
+  </tr>
+  <tr>
+    <td>Logistic Services</td>
+    <td style="text-align: left;">{!Invoice__c.Name}</td>
+    
+  </tr>
+  <tr>
+    <td>12th Street, Periamet</td>
+    <td style="text-align: left;">{!Invoice__c.PickupStreet__c}</td>
+    
+  </tr>
+  <tr>
+    <td>Chennai</td>
+    <td style="text-align: left;">{!Invoice__c.PickupCity__c}</td>
+    
+  </tr>  
+   </table>
+   <h5 >Invoice No : {!Invoice__c.Invoice_No__c}</h5>
+      <hr style="width:100%;  margin-bottom: 40px;"></hr>
+   <apex:pageBlock >
+    <apex:pageBlockTable value="{!Invoice__c}" var="invoice" border="1" width="100%" align="center" >        
+         <apex:column value="{!invoice.ItemName__c}"/>
+         <apex:column value="{!invoice.Status__c}"/>
+         <apex:column value="{!invoice.Weight__c}"/>
+         <apex:column value="{!invoice.Total__c}"/>
+      </apex:pageBlockTable>
+   </apex:pageBlock>
+       
+</apex:page>

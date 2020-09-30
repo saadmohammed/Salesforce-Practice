@@ -1,35 +1,16 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, wire } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import insertInvoice from '@salesforce/apex/InvoiceController.insertInvoice'
-
+import getAllName from '@salesforce/apex/InvoiceController.getAllName';
+import getDriverId from '@salesforce/apex/InvoiceController.getDriverId';
 export default class Invoice extends LightningElement {
 
   @track error;
-  
+
+  value = '';
+  valueText = "Select Driver";
   Total;
-  /*
-   *Combobox Values 
-   */
-  value = 'placed'
-  get options() {
-    return [{
-        label: 'Placed',
-        value: 'placed'
-      },
-      {
-        label: 'On the Way',
-        value: 'ontheway'
-      },
-      {
-        label: 'Shipped',
-        value: 'shipped'
-      },
-      {
-        label: 'Delivered',
-        value: 'delivered'
-      }
-    ];
-  }
+  driverName;
 
   /*
    * Field of invoice
@@ -39,7 +20,7 @@ export default class Invoice extends LightningElement {
     Name: '',
     Mobile__c: '',
     Email__c: '',
-    Status__c: this.value,
+    Status__c: '',
     ItemName__c: '',
     Weight__c: '',
     Rateperkg__c: '',
@@ -90,10 +71,6 @@ export default class Invoice extends LightningElement {
   handleShippingDateTime(event) {
     this.invoiceRecord.ShippingDateTime__c = event.target.value;
   }
-
-
-
-
   handleItemName(event) {
     this.invoiceRecord.ItemName__c = event.target.value;
   }
@@ -109,8 +86,33 @@ export default class Invoice extends LightningElement {
     // console.log(this.amount);  
   }
 
+  @wire(getAllName)
+  nameList
+
+  get driverOptions(){
+    var returnOptions = [];
+    if (this.nameList.data) {
+      this.nameList.data.forEach(ele => {
+        returnOptions.push({
+          label: ele.Name,
+          value: ele.Name
+        });
+      });
+    }
+    // console.log(JSON.stringify(returnOptions));
+    return returnOptions;
+  }
+
+  handleDriverChange(event){
+    this.value = event.detail.value;
+    this.valueText = "From Selected";
+    this.driverName = event.detail.value;
+  }
+
+  
+
   handleSave() {  
-    insertInvoice({invoice: this.invoiceRecord})
+    insertInvoice({invoice: this.invoiceRecord, name: this.driverName})
       .then(result => {
           console.log(JSON.stringify(result));
           // Show success messsage
