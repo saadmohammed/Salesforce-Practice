@@ -5,7 +5,7 @@ public class GenerateInvoice {
     get {
       if (invoices == null) {
         invoices = new List<SelectOption>();
-        for(Invoice__c invoice : [SELECT Id,Name FROM Invoice__c]){
+        for(Invoice__c invoice : [SELECT Id,Name FROM Invoice__c WHERE Status__c = 'placed']){
 
             invoices.add(new SelectOption(invoice.Id,invoice.Name));
         }	

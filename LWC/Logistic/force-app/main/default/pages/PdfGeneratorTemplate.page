@@ -32,7 +32,6 @@
          <apex:column value="{!invoice.Status__c}"/>
          <apex:column value="{!invoice.Weight__c}"/>
          <apex:column value="{!invoice.Total__c}"/>
-        
       </apex:pageBlockTable>
    </apex:pageBlock>
        
