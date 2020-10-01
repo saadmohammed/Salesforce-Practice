@@ -4,11 +4,11 @@ Practicing salesforce development using apex, triggers, test, lwc etc...
 In the development training, I have learned Apex Class, Apex Trigger, Apex Test, Visualforce, Aura Components, Lightning Web Components.
 
 Apex Class, Apex Trigger and Apex Test Assignments.
-Here we have implement three business logic and below links contains all source code related to this repository.
+Here we have implement three business logic and below links contains all source code.
 
 https://github.com/saadmohammed/Salesforce-Practice/tree/master/ApexClass%20ApexTrigger
 
-Visualforce and LWC related assignments, superbadge and some sample projects that I have done, contains in the below link.
+Visualforce and LWC related assignments, superbadge and some sample projects that I have done, contains in this module.
 
 LOGISTIC APPLICATION (PROJECT):
 
@@ -30,5 +30,5 @@ TODO APPLICATION:
 
 https://github.com/saadmohammed/Salesforce-Practice/tree/master/LWC/Basic/force-app/main/default/lwc/todo
 
-Other LWC Components and Classes are available.
+Other LWC Components and Classes are available in this repository.
  
